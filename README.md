@@ -51,8 +51,9 @@ See `sample-1-minishift.yml` file for a example.
 
 ```
 $ cat sample-1-minishift.yml
+```
 
-
+```yaml
 ---
 - name: Install Minishift.
   hosts: Pisc0
