@@ -63,7 +63,8 @@ $ cat sample-1-minishift.yml
     ms_hostname_and_profile: openshift0
 
   roles:
-    - role: ansible-role-minishift
+    #- role: ansible-role-minishift
+    - role: chilcano.minishift
       minishift:
         action_to_trigger: install # [ install | fresh_install | clean ]
         action:
@@ -77,9 +78,9 @@ $ cat sample-1-minishift.yml
         post_copy_oc: false
         start_options:
           vm-driver: virtualbox
-          iso-url: file:///Users/Chilcano/Downloads/__kube_repo/minishift-b2d-iso/v1.2.0/minishift-b2d.iso
+          #iso-url: file:///Users/Chilcano/Downloads/__kube_repo/minishift-b2d-iso/v1.2.0/minishift-b2d.iso
           #iso-url: file:///Users/Chilcano/Downloads/__kube_repo/minishift-centos-iso/v1.2.0/minishift-centos7.iso
-          #iso-url: https://github.com/minishift/minishift-b2d-iso/releases/download/v1.2.0/minishift-b2d.iso
+          iso-url: https://github.com/minishift/minishift-b2d-iso/releases/download/v1.2.0/minishift-b2d.iso
           #iso-url: https://github.com/minishift/minishift-centos-iso/releases/download/v1.2.0/minishift-centos7.iso
           profile: "{{ ms_hostname_and_profile }}"
           #openshift-version: ""        # latest (https://hub.docker.com/r/openshift/origin/tags)
@@ -104,7 +105,7 @@ $ cat sample-1-minishift.yml
 
 Install the role:
 ```
-$ ansible-galaxy install chilcano.minishift
+$ sudo ansible-galaxy install chilcano.minishift
 ```
 
 Copy the playbook from your roles path to the current working directory:
