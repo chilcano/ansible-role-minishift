@@ -63,7 +63,6 @@ $ cat sample-1-minishift.yml
     ms_hostname_and_profile: openshift0
 
   roles:
-    #- role: ansible-role-minishift
     - role: chilcano.minishift
       minishift:
         action_to_trigger: install # [ install | fresh_install | clean ]

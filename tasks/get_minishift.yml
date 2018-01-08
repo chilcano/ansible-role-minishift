@@ -2,8 +2,9 @@
   set_fact:
     minishift_release_url: "{{ __ms.repo.github_url }}/{{ __ms.repo.name }}/releases/latest"
 
-- name: install | get_minishift | Set the 'tagget' release URL
+- name: install | get_minishift | Set the 'tagged' release URL
   set_fact:
+    # https://api.github.com/repos/minishift/minishift/releases/tags/v1.11.0
     minishift_release_url: "{{ __ms.repo.github_url }}/{{ __ms.repo.name }}/releases/tags/{{ __ms.repo.release_tag_name }}"
   when: __ms.repo.release_tag_name != ''
 
