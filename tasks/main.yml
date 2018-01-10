@@ -12,6 +12,7 @@
   command: "minishift --profile {{ __ms.start_options.profile }} status"
   register: instance_status
   when: minishift_cli.stat.exists
+  ignore_errors: yes
 
 - name: main | Get the IP address of '{{ __ms.start_options.profile }}' instance.
   command: "minishift --profile {{ __ms.start_options.profile }} ip"

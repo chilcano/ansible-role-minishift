@@ -23,10 +23,8 @@ galaxy_info:
       versions:
       - all
   galaxy_tags:
-    - oc
     - openshift
     - container
-    - cluster
     - minishift
     - docker
     - kubernetes
