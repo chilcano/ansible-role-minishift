@@ -4,7 +4,7 @@
   connection: local
   gather_facts: yes
   vars:
-    hostname_and_profile: openshift3
+    vm: openshift0
 
   roles:
     #- role: chilcano.minishift
@@ -24,7 +24,7 @@
           #iso-url: file:///Users/Chilcano/Downloads/__kube_repo/minishift-centos-iso/v1.2.0/minishift-centos7.iso
           iso-url: https://github.com/minishift/minishift-b2d-iso/releases/download/v1.2.0/minishift-b2d.iso
           #iso-url: https://github.com/minishift/minishift-centos-iso/releases/download/v1.2.0/minishift-centos7.iso
-          profile: "{{ hostname_and_profile }}"
+          profile: "{{ vm }}"
           #openshift-version: ""        # latest (https://hub.docker.com/r/openshift/origin/tags)
           openshift-version: "v3.7.0"
           #openshift-version: "v3.6.0"
