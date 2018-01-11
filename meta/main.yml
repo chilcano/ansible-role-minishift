@@ -7,9 +7,6 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.3
   platforms:
-    - name: MacOSX
-      versions:
-      - 10.11
     - name: EL
       versions:
       - 7
@@ -24,8 +21,9 @@ galaxy_info:
       - all
   galaxy_tags:
     - openshift
-    - container
     - minishift
-    - docker
     - kubernetes
     - minikube
+    - container
+    - docker
+    - vm
