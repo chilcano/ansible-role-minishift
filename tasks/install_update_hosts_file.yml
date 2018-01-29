@@ -1,13 +1,9 @@
-- name: install_update_hosts_file | Remove hostname '{{ __ms.start_options['profile'] }}'
+- name: install_update_hosts_file | Updating '/etc/hosts'
   lineinfile:
     dest: /etc/hosts
-    regexp: "{{ __ms.start_options['profile'] }}"
-    state: absent
-  become: yes
-
-- name: install_update_hosts_file | Updating '/etc/hosts' with '{{ instance_ip_address }} {{ __ms.start_options['profile'] }}'
-  lineinfile:
-    dest: /etc/hosts
-    regexp: '^{{ instance_ip_address }}'
-    line: "{{ instance_ip_address }}  {{ __ms.start_options['profile'] }}"
+    line: '{{ item }}'
+  with_items:
+    - "{{ instance_ip_address }}  {{ __ms.start_options['profile'] }}"
+    - "{{ instance_ip_address }}  hawkular-metrics-openshift-infra.{{ instance_ip_address }}.nip.io"  # --metrics enabled
+    - "{{ instance_ip_address }}  kibana-logging.{{ instance_ip_address }}.nip.io"  # --logging enabled
   become: yes
