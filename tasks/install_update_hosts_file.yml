@@ -3,7 +3,7 @@
     dest: /etc/hosts
     line: '{{ item }}'
   with_items:
-    - "{{ instance_ip_address }}  {{ __ms.start_options['profile'] }}"
-    - "{{ instance_ip_address }}  hawkular-metrics-openshift-infra.{{ instance_ip_address }}.nip.io"  # --metrics enabled
-    - "{{ instance_ip_address }}  kibana-logging.{{ instance_ip_address }}.nip.io"  # --logging enabled
+    - "{{ instance_ip_address }} {{ __ms.start_options['profile'] }}"
+    - "{{ instance_ip_address }} hawkular-metrics-openshift-infra.{{ instance_ip_address }}.nip.io"  # --metrics enabled
+    - "{{ instance_ip_address }} kibana-logging.{{ instance_ip_address }}.nip.io"  # --logging enabled
   become: yes

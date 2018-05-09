@@ -9,15 +9,15 @@
   register: minishift_cli
 
 - name: main | Get the Minishift status of '{{ __ms.start_options.profile }}'.
-  command: "minishift --profile {{ __ms.start_options.profile }} status"
+  command: "minishift status --profile {{ __ms.start_options.profile }}"
   register: instance_status
-  when: minishift_cli.stat.exists
+  when: minishift_cli.stat is defined
   ignore_errors: yes
 
 - name: main | Get the IP address of '{{ __ms.start_options.profile }}' instance.
-  command: "minishift --profile {{ __ms.start_options.profile }} ip"
+  command: "minishift ip --profile {{ __ms.start_options.profile }}"
   register: ip_addr
-  when: minishift_cli.stat.exists and instance_status.stdout | search('Running')
+  when: minishift_cli.stat is defined and instance_status.stdout | regex_search('Running')
 
 - name: main | Defining the Minishift profile's regex and getting the IP Address.
   set_fact:

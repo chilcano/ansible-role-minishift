@@ -16,13 +16,13 @@
   ignore_errors: yes
 
 - name: install_start_minishift | Get latest Minishift status of '{{ __ms.start_options.profile }}'
-  command: "minishift --profile {{ __ms.start_options.profile }} status"
+  command: "minishift status --profile {{ __ms.start_options.profile }}"
   register: instance_status
 
 - name: install_start_minishift | Get latest IP address of '{{ __ms.start_options.profile }}' instance
-  command: "minishift --profile {{ __ms.start_options.profile }} ip"
+  command: "minishift ip --profile {{ __ms.start_options.profile }}"
   register: ip_addr
-  when: instance_status.stdout | search('Running')
+  when: instance_status.stdout | regex_search('Running')
 
 - name: install_start_minishift | Update the IP Address of '{{ __ms.start_options.profile }}' with latest value
   set_fact:

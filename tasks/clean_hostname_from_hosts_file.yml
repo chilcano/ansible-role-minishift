@@ -4,3 +4,4 @@
     regexp: '^{{ instance_ip_address }}'
     state: absent
   become: yes
+  when: instance_ip_address != ""

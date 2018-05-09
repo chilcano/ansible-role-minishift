@@ -38,13 +38,13 @@
   command: "unzip {{ __ms.dir.local_repo }}/{{ asset_name }} -d {{ __ms.dir.local_repo }}/{{ asset_name_without_ext }}"
   args:
     creates: "{{ __ms.dir.local_repo }}/{{ asset_name_without_ext }}/minishift"
-  when: asset_name | search('zip$')
+  when: asset_name | regex_search('zip$')
 
 - name: install | get_minishift | Untar the archive
   command: "tar -xvzf {{ __ms.dir.local_repo }}/{{ asset_name }} -C {{ __ms.dir.local_repo }}/{{ asset_name_without_ext }}"
   args:
     creates: "{{ __ms.dir.local_repo }}/{{ asset_name_without_ext }}/minishift"
-  when: asset_name | search('tgz$')
+  when: asset_name | regex_search('tgz$')
 
 - name: install | get_minishift | Search 'minishift' binary in unzipped dir '{{ __ms.dir.local_repo }}/{{ asset_name_without_ext }}'
   find:
